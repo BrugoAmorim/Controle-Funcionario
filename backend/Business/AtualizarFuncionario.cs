@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 
 namespace backend.Business
 {
-    public class RegistrarFuncionario
+    public class AtualizarFuncionario
     {
-        Database.EstadosDatabase buscarestado = new Database.EstadosDatabase();
-        Database.CargoDatabase buscarcargo = new Database.CargoDatabase();
+        Database.CargoDatabase bdcargo = new Database.CargoDatabase();
+        Database.EstadosDatabase bdestado = new Database.EstadosDatabase();
         Database.FuncionarioDatabase salvar = new Database.FuncionarioDatabase();
 
-        public Models.Response.FuncionarioResponse validaRegistro(Models.Request.FuncionarioRequest rq){
+        public Models.Response.FuncionarioResponse validarupdate(Models.Request.FuncionarioRequest rq, int id){
+
+            if(salvar.buscainfo(id) == null)
+                throw new ArgumentException("Este Funcionário não foi encontrado no sistema");
 
             if(string.IsNullOrEmpty(rq.nome))
                 throw new ArgumentException("É necessário informar o nome do funcionário");
@@ -34,15 +37,14 @@ namespace backend.Business
             if(rq.celular.Length != 12 && rq.celular != "")
                 throw new ArgumentException("Número do celular inválido");
 
-            if(buscarestado.validarestado(rq.estadonasc) != true || string.IsNullOrEmpty(rq.estadonasc))
+            if(bdestado.validarestado(rq.estadonasc) != true || string.IsNullOrEmpty(rq.estadonasc))
                 throw new ArgumentException("Este estado não existe");
             
-            if(buscarcargo.validarcargo(rq.cargo) != true || string.IsNullOrEmpty(rq.cargo))
+            if(bdcargo.validarcargo(rq.cargo) != true || string.IsNullOrEmpty(rq.cargo))
                 throw new ArgumentException("Este cargo não foi encontrado");
 
-            // salva o modelo no bando de dados
-            Models.Response.FuncionarioResponse inserido = salvar.inserirfunc(rq);            
-            return inserido;
-        }
+            Models.Response.FuncionarioResponse res = salvar.atualizar(id, rq);
+            return res;
+        }   
     }
 }

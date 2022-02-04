@@ -47,5 +47,22 @@ namespace backend.Controllers
                 );
             }
         }
+
+        [HttpPut("info-func/{idfunc}")]
+        public ActionResult<Models.Response.FuncionarioResponse> alterarinformacoes(Models.Request.FuncionarioRequest update, int idfunc)
+        {
+            try{
+                Business.AtualizarFuncionario validar = new Business.AtualizarFuncionario();
+
+                Models.Response.FuncionarioResponse reg = validar.validarupdate(update, idfunc);
+                return reg;
+            }
+            catch(System.Exception ex){
+
+                return new BadRequestObjectResult(
+                    new Models.ErrorResponse(ex.Message, 400)
+                );
+            }
+        }
     }
 }

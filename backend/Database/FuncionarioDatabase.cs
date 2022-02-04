@@ -38,5 +38,39 @@ namespace backend.Database
             Models.Response.FuncionarioResponse res = converter.modelRes(func, est.NmEstado, cg.DsCargo);
             return res;
         }
+
+        //verificar se este funcionario esta no sistema
+        public Models.TbFuncionario buscainfo(int id){
+
+            Models.TbFuncionario registro = ctx.TbFuncionarios.FirstOrDefault(x => x.IdFuncionario == id);
+
+            return registro;
+        }
+
+        // altera os registros de um funcionario, informando o seu id
+        public Models.Response.FuncionarioResponse atualizar(int id, Models.Request.FuncionarioRequest req){
+
+            Database.CargoDatabase buscarcargo = new Database.CargoDatabase();
+            Database.EstadosDatabase buscarestado = new Database.EstadosDatabase();
+
+            // ele vai buscar registros referentes ao nomes dados no buscarcargo e buscarestado
+            Models.TbCargo cg = buscarcargo.buscarCargo(req.cargo);
+            Models.TbEstado est = buscarestado.buscarestado(req.estadonasc);
+
+            // ele pega o registro do funcionario atraves do id e copia as informacoes do req
+            Models.TbFuncionario registro = ctx.TbFuncionarios.First(x => x.IdFuncionario == id);
+            registro.NmFuncionario = req.nome;
+            registro.DsCpf = req.cpf;
+            registro.DsRg = req.rg;
+            registro.DsTelefone = req.telefone;
+            registro.DsCelular = req.celular;
+            registro.IdCargo = cg.IdCargo;
+            registro.IdEstado = est.IdEstado;
+            ctx.SaveChanges();
+
+            Models.Response.FuncionarioResponse res = converter.modelRes(registro, est.NmEstado, cg.DsCargo);
+
+            return res;
+        }
     }
 }

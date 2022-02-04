@@ -7,6 +7,7 @@ namespace backend.Database
 {
     public class EstadosDatabase
     {
+
         Models.bdfuncionarioContext ctx = new Models.bdfuncionarioContext();
         public bool validarestado(string estad){
 
