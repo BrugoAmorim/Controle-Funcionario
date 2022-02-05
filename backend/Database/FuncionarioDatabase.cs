@@ -72,5 +72,14 @@ namespace backend.Database
 
             return res;
         }
+
+        // deleta os registros de um funcionario atraves do id
+        public void confirmardelete(int idfuncionario){
+
+            Models.TbFuncionario infofunc = ctx.TbFuncionarios.First(x => x.IdFuncionario == idfuncionario);
+
+            ctx.TbFuncionarios.Remove(infofunc);
+            ctx.SaveChanges();
+        }
     }
 }

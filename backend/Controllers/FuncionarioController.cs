@@ -64,5 +64,22 @@ namespace backend.Controllers
                 );
             }
         }
+
+        [HttpDelete("del-func/{idfunc}")]
+        public ActionResult<string> deletarRegistro(int idfunc){
+
+            try{
+                Business.DeletarFuncionario apagar = new Business.DeletarFuncionario();
+
+                apagar.validardelete(idfunc);
+                return "Deletado com Sucesso!";
+            }
+            catch(System.Exception ex){
+
+                return new BadRequestObjectResult(
+                    new Models.ErrorResponse(ex.Message, 400)
+                );
+            }
+        }
     }
 }
