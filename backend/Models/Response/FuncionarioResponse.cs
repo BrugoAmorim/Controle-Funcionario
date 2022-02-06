@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace backend.Models.Response
 {
     public class FuncionarioResponse
@@ -16,6 +15,5 @@ namespace backend.Models.Response
         public DateTime datacontratado {get;set;}
         public string telefone {get;set;}
         public string celular {get;set;}
-
     }
 }

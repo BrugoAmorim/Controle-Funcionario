@@ -81,5 +81,8 @@ namespace backend.Database
             ctx.TbFuncionarios.Remove(infofunc);
             ctx.SaveChanges();
         }
+
+
+
     }
 }

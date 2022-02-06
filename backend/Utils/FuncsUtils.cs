@@ -61,7 +61,7 @@ namespace backend.Utils
 
             return model;
         }
-
+        
         // converte um modelo de tabela para response sem o idnavigation
         public Models.Response.FuncionarioResponse modelRes(Models.TbFuncionario req, string estnasc, string departamento){
 

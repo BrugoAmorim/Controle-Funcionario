@@ -12,6 +12,7 @@ namespace backend.Controllers
     {
         Utils.FuncsUtils conversor = new Utils.FuncsUtils();
 
+        /*
         [HttpGet("buscar-func")]
         public ActionResult<List<Models.Response.FuncionarioResponse>> cadastrados(){
 
@@ -29,7 +30,7 @@ namespace backend.Controllers
                     new Models.ErrorResponse(ex.Message, 400)
                 );
             }
-        }
+        } */
 
         [HttpPost("reg-func")]
         public ActionResult<Models.Response.FuncionarioResponse> registrarfunc(Models.Request.FuncionarioRequest req){
@@ -81,5 +82,26 @@ namespace backend.Controllers
                 );
             }
         }
+
+        // funcao de ordenar funcionarios, retorna os mais novos ou os funcionarios mais antigos da empresa, se nao houver filtros ele retornará uma lista normal
+        [HttpGet("filtrar-func")]
+        public ActionResult<List<Models.Response.FuncionarioResponse>> filtrofunc(string contratado){
+
+            try{
+                Business.FuncionarioBusiness validarget = new Business.FuncionarioBusiness();
+
+                List<Models.TbFuncionario> caixote = validarget.verificaparam(contratado);
+                List<Models.Response.FuncionarioResponse> res = conversor.lstfunc(caixote);
+
+                return res;
+            }
+            catch(System.Exception ex){
+
+                return new BadRequestObjectResult(
+                    new Models.ErrorResponse(ex.Message, 400)
+                );
+            }
+        }
+    
     }
 }
