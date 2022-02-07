@@ -1,4 +1,3 @@
-
 let bdy = document.getElementById("informacoes");
 let opcao = document.getElementById("selecionado");
 
@@ -6,6 +5,7 @@ window.onload = async function carregarRegistros(){
 
     let url = "http://localhost:5000/Funcionario/filtrar-func?contratado=";
 
+    // esta linha de codigo é executada assim que carrega a pagina
     const api = await fetch(url, {
 
         method:'GET',
@@ -36,14 +36,16 @@ window.onload = async function carregarRegistros(){
             let cp2 = document.createElement('td');
         
             cp1.appendChild(document.createTextNode(obj.nome));
-            cp2.appendChild(document.createTextNode("Na Empresa a " + anos));
+            cp2.appendChild(document.createTextNode("| Na Empresa a " + anos));
 
             info.appendChild(cp1);
             info.appendChild(cp2);
             bdy.appendChild(info);
         }
+        
     })  
 
+    // se o usuario decidir ordernar os funcionarios, esta linha de codigo será executada
     if(opcao.onclick = async function(){
 
         while (bdy.firstChild) {
@@ -82,7 +84,7 @@ window.onload = async function carregarRegistros(){
                 let cp2 = document.createElement('td');
             
                 cp1.appendChild(document.createTextNode(obj.nome));
-                cp2.appendChild(document.createTextNode("Na Empresa a " + anos));
+                cp2.appendChild(document.createTextNode("| Na Empresa a " + anos));
 
                 info.appendChild(cp1);
                 info.appendChild(cp2);

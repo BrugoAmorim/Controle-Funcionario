@@ -1,0 +1,78 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(#323232, #323232);
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.lstcargos{
+    height: 70%;
+    width: 80%;
+    background-color: #191919;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.eventos{
+    height: 15%;
+    width: 90%;
+    margin: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction:row;
+    color: white;
+}
+
+.conteudo{
+    height: 70%;
+    width: 90%;
+    background-color: white;
+    margin: 1%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    display: block;
+    overflow-y: auto;
+}
+
+.bloco{
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow-y: auto;
+}
+
+.bloco div{
+    min-height: 40%;
+    min-width: 40%;
+    max-height: 40%;
+    max-width: 40%;
+    background-color: #191919;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 1%;
+    margin: 1%;
+}
+
+.bloco strong{
+    color: white;
+}
+
+.bloco span{
+    color: turquoise;
+}

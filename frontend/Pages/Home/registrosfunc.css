@@ -1,6 +1,7 @@
 body{
     height: 100vh;
     width: 100vw;
+    background-image: linear-gradient(#322e32,#322e32);
 }
 
 .container{
@@ -77,4 +78,3 @@ body{
     display: block;
     overflow-y: auto;
 }
-
