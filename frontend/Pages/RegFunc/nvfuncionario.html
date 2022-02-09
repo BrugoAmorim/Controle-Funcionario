@@ -15,7 +15,7 @@
         <div class="form">
             <div class="nome">
                 <div class="inputnome">
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Nome Completo">    
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Nome Completo" id="nomefuncionario">    
                 </div>
             </div>
             <div class="texto">
@@ -23,23 +23,27 @@
             </div>
             <div class="infobrigatorias">
                 <div class="bloco1">
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Rg do Empregado">    
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Cpf do Empregado">
+                    <!-- campos para inserir o rg e o cpf do novo empregado -->
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Rg do Empregado" id="rgfuncionario">    
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Cpf do Empregado" id="cpffuncionario">
                 </div>
                 <div class="bloco2">
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="N° Telefone">    
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="N° Celular">
+                    <!-- camposa para inserir o N° de telefone e celular do empregado -->
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="N° Telefone" id="telfuncionario">    
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="N° Celular" id="celfuncionario">
                 </div>
             </div>
             <div class="selectbox">
                 <div class="group1">
-                    <select name="" id="" class="custom-select">
-                        <option value="" selected> Estado </option>
+                    <!-- aqui o usuario seleciona o estado de nascimento do empregado -->
+                    <select name="escolha o estado" id="selecionarestado" class="custom-select">
+                        <option selected> Estado </option>
                     </select>
                 </div>
                 <div class="group2">
-                    <select name="" id="" class="custom-select">
-                        <option value="" selected> Cargo </option>
+                    <!-- aqui é definido qual é o cargo do do novo funcionario na empresa -->
+                    <select name="escolha o cargo" id="selecionarcargo" class="custom-select">
+                        <option selected> Cargo </option>
                     </select>
                 </div>
             </div>
@@ -48,10 +52,11 @@
                     <a href="../Home/registrosfunc.html" class="btn btn-primary">Voltar</a>
                 </div>
                 <div class="btnsalvar">
-                    <button class="btn btn-success">Registrar</button>
+                    <button class="btn btn-success" id="Confirmar">Registrar</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="../../Src/postfunc.js"></script>
 </body>
 </html>
