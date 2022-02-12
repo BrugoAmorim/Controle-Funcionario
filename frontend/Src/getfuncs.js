@@ -34,13 +34,36 @@ window.onload = async function carregarRegistros(){
             let info = document.createElement('tr');
             let cp1 = document.createElement('td');
             let cp2 = document.createElement('td');
+
+            let btn = document.createElement('button');
+            let img = new Image(45,45);
         
             cp1.appendChild(document.createTextNode(obj.nome));
             cp2.appendChild(document.createTextNode("| Na Empresa a " + anos));
+            img.alt = ('na');
+            img.src = ('../Img/lixeira-semfundo.png');
 
             info.appendChild(cp1);
             info.appendChild(cp2);
+            btn.appendChild(img);
+            info.appendChild(btn);
+
             bdy.appendChild(info);
+            
+            if(btn.addEventListener("click", function(){
+                window.location.href = "../DelFunc/deletefunc.html";
+                
+                localStorage.setItem('id', obj.idfunc);
+                localStorage.setItem('nome', obj.nome);
+                localStorage.setItem('rg', obj.rg);
+                localStorage.setItem('cpf',obj.cpf);
+                localStorage.setItem('cargo', obj.cargo);
+                localStorage.setItem('estado', obj.estadonasc);
+                localStorage.setItem('telefone', obj.telefone);
+                localStorage.setItem('celular', obj.celular);
+            
+            }));
+            
         }
         
     })  
@@ -82,13 +105,35 @@ window.onload = async function carregarRegistros(){
                 let info = document.createElement('tr');
                 let cp1 = document.createElement('td');
                 let cp2 = document.createElement('td');
+
+                let btn = document.createElement('button');
+                let img = new Image(45,45);
             
                 cp1.appendChild(document.createTextNode(obj.nome));
                 cp2.appendChild(document.createTextNode("| Na Empresa a " + anos));
+                img.alt = ('na');
+                img.src = ('../Img/lixeira-semfundo.png');
 
                 info.appendChild(cp1);
                 info.appendChild(cp2);
+                btn.appendChild(img);
+                info.appendChild(btn);
+                
                 bdy.appendChild(info);
+
+                if(btn.addEventListener("click", function(){
+
+                    window.location.href = "../DelFunc/deletefunc.html";                    
+                    localStorage.setItem('id');
+                    localStorage.setItem('nome');
+                    localStorage.setItem('rg');
+                    localStorage.setItem('cpf');
+                    localStorage.setItem('cargo');
+                    localStorage.setItem('estado');
+                    localStorage.setItem('telefone');
+                    localStorage.setItem('celular');
+                
+                }));
             }
         })      
 

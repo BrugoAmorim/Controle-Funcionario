@@ -88,6 +88,8 @@ Registrar.onclick = async function cadastrarFuncionario(){
     res.then(res => {
         if(res.codigo == 400)
             alert(res.motivo);
+        else
+            window.location.href = "../../Pages/Home/registrosfunc.html";
     });
 
 }
