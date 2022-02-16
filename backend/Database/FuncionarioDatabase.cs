@@ -25,8 +25,8 @@ namespace backend.Database
             Database.CargoDatabase buscarcargo = new Database.CargoDatabase();
             Database.EstadosDatabase buscarestado = new Database.EstadosDatabase();
 
-            Models.TbCargo cg = buscarcargo.buscarCargo(req.cargo);
-            Models.TbEstado est = buscarestado.buscarestado(req.estadonasc);
+            Models.TbCargo cg = buscarcargo.buscarpornome(req.cargo);
+            Models.TbEstado est = buscarestado.buscarpornome(req.estadonasc);
 
             Models.TbFuncionario func = converter.reqFuncparaTb(req);
             func.IdCargo = cg.IdCargo;
@@ -48,28 +48,26 @@ namespace backend.Database
         }
 
         // altera os registros de um funcionario, informando o seu id
-        public Models.Response.FuncionarioResponse atualizar(int id, Models.Request.FuncionarioRequest req){
+        public Models.Response.AtualizarFuncionarioResponse atualizar(int idcg, int idest, int idfunc,Models.Request.AtualizarFuncionarioResquest req){
 
-            Database.CargoDatabase buscarcargo = new Database.CargoDatabase();
-            Database.EstadosDatabase buscarestado = new Database.EstadosDatabase();
+            Database.CargoDatabase tbcargo = new Database.CargoDatabase();
+            Database.EstadosDatabase tbest = new Database.EstadosDatabase();
 
-            // ele vai buscar registros referentes ao nomes dados no buscarcargo e buscarestado
-            Models.TbCargo cg = buscarcargo.buscarCargo(req.cargo);
-            Models.TbEstado est = buscarestado.buscarestado(req.estadonasc);
+            Models.TbCargo cg = tbcargo.buscarCargo(idcg);
+            Models.TbEstado est = tbest.buscarestado(idest);
 
             // ele pega o registro do funcionario atraves do id e copia as informacoes do req
-            Models.TbFuncionario registro = ctx.TbFuncionarios.First(x => x.IdFuncionario == id);
+            Models.TbFuncionario registro = ctx.TbFuncionarios.First(x => x.IdFuncionario == idfunc);
             registro.NmFuncionario = req.nome;
             registro.DsCpf = req.cpf;
             registro.DsRg = req.rg;
             registro.DsTelefone = req.telefone;
             registro.DsCelular = req.celular;
-            registro.IdCargo = cg.IdCargo;
-            registro.IdEstado = est.IdEstado;
+            registro.IdCargo = idcg;
+            registro.IdEstado = idest;
             ctx.SaveChanges();
 
-            Models.Response.FuncionarioResponse res = converter.modelRes(registro, est.NmEstado, cg.DsCargo);
-
+            Models.Response.AtualizarFuncionarioResponse res = converter.copiarAtualizacoes(registro, est.NmEstado, cg.DsCargo);
             return res;
         }
 

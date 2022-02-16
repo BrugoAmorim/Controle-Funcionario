@@ -34,10 +34,10 @@ namespace backend.Business
             if(rq.celular.Length != 12 && rq.celular != "")
                 throw new ArgumentException("Número do celular inválido");
 
-            if(buscarestado.validarestado(rq.estadonasc) != true || string.IsNullOrEmpty(rq.estadonasc))
+            if(buscarestado.buscarpornome(rq.estadonasc) == null)
                 throw new ArgumentException("Este estado não existe");
             
-            if(buscarcargo.validarcargo(rq.cargo) != true || string.IsNullOrEmpty(rq.cargo))
+            if(buscarcargo.buscarpornome(rq.cargo) == null)
                 throw new ArgumentException("Este cargo não foi encontrado");
 
             // salva o modelo no bando de dados

@@ -10,19 +10,22 @@ namespace backend.Database
 
         Models.bdfuncionarioContext ctx = new Models.bdfuncionarioContext();
         
-        // procura por pelo menos um estado que exista no banco atraves do nome
-        public bool validarestado(string estad){
+        // procura um estado atraves do id e retorna suas informacoes, caso exista
+        public bool validarestado(int idestado){
 
             List<Models.TbEstado> estados = ctx.TbEstados.ToList();
 
-            bool existente = estados.Any(x => x.NmEstado == estad);
+            bool existente = estados.Any(x => x.IdEstado == idestado);
             return existente;
         }   
 
-        // procura o registro do estado atraves do nome e retorna suas informacoes
-        public Models.TbEstado buscarestado(string estado){
 
-            Models.TbEstado est = ctx.TbEstados.First(x => x.NmEstado == estado);
+        // procura o registro do estado atraves do id e retorna suas informacoes
+        public Models.TbEstado buscarestado(int estado){
+
+            List<Models.TbEstado> estados = ctx.TbEstados.ToList();
+
+            Models.TbEstado est = estados.First(x => x.IdEstado == estado);
             return est;
         }
 
@@ -31,6 +34,15 @@ namespace backend.Database
 
             List<Models.TbEstado> caixote = ctx.TbEstados.ToList();
             return caixote;
+        }
+
+        // busca as informacoes pelo nome
+        public Models.TbEstado buscarpornome(string est){
+                        
+            List<Models.TbEstado> estados = ctx.TbEstados.ToList();
+
+            Models.TbEstado ests = estados.FirstOrDefault(x => x.NmEstado == est);
+            return ests;
         }
     }
 }

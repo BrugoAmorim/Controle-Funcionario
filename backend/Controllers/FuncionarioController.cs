@@ -50,13 +50,13 @@ namespace backend.Controllers
         }
 
         [HttpPut("info-func/{idfunc}")]
-        public ActionResult<Models.Response.FuncionarioResponse> alterarinformacoes(Models.Request.FuncionarioRequest update, int idfunc)
+        public ActionResult<Models.Response.AtualizarFuncionarioResponse> alterarinformacoes(Models.Request.AtualizarFuncionarioResquest update, int idfunc)
         {
             try{
                 Business.AtualizarFuncionario validar = new Business.AtualizarFuncionario();
 
-                Models.Response.FuncionarioResponse reg = validar.validarupdate(update, idfunc);
-                return reg;
+                Models.Response.AtualizarFuncionarioResponse res = validar.validarupdate(update, idfunc);   
+                return res;
             }
             catch(System.Exception ex){
 

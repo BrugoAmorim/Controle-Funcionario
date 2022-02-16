@@ -12,6 +12,8 @@ namespace backend.Utils
 
             Models.Response.FuncionarioResponse ctx = new Models.Response.FuncionarioResponse();
 
+            ctx.idcg = req.IdCargo;
+            ctx.idest = req.IdEstado;
             ctx.nome = req.NmFuncionario;
             ctx.idfunc = req.IdFuncionario;
             ctx.rg = req.DsRg;
@@ -88,5 +90,29 @@ namespace backend.Utils
             return ctx; 
         }
 
+        public Models.Response.AtualizarFuncionarioResponse copiarAtualizacoes(Models.TbFuncionario req, string estnasc, string departamento){
+
+            Models.Response.AtualizarFuncionarioResponse ctx = new Models.Response.AtualizarFuncionarioResponse();
+            
+            ctx.nome = req.NmFuncionario;
+            ctx.idfunc = req.IdFuncionario;
+            ctx.rg = req.DsRg;
+            ctx.cpf = req.DsCpf;
+            ctx.estadonasc = estnasc;
+            ctx.cargo = departamento;
+            ctx.datacontratado = req.DtContratado;
+
+            if(req.DsCelular == "")
+                ctx.celular = "não informado";
+            else
+                ctx.celular = req.DsCelular;
+
+            if(req.DsTelefone == "")
+                ctx.telefone = "não informado";
+            else
+                ctx.telefone = req.DsTelefone;
+
+            return ctx; 
+        }
     }
 }

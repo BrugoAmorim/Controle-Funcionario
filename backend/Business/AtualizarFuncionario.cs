@@ -11,9 +11,12 @@ namespace backend.Business
         Database.EstadosDatabase bdestado = new Database.EstadosDatabase();
         Database.FuncionarioDatabase salvar = new Database.FuncionarioDatabase();
 
-        public Models.Response.FuncionarioResponse validarupdate(Models.Request.FuncionarioRequest rq, int id){
+        public Models.Response.AtualizarFuncionarioResponse validarupdate(Models.Request.AtualizarFuncionarioResquest rq,int idfunc){
 
-            if(salvar.buscainfo(id) == null)
+            bool reg1 = bdestado.validarestado(rq.idest);
+            bool reg2 =  bdcargo.validarcargo(rq.idcg);
+
+            if(salvar.buscainfo(idfunc) == null)
                 throw new ArgumentException("Este Funcionário não foi encontrado no sistema");
 
             if(string.IsNullOrEmpty(rq.nome))
@@ -37,14 +40,14 @@ namespace backend.Business
             if(rq.celular.Length != 12 && rq.celular != "")
                 throw new ArgumentException("Número do celular inválido");
 
-            if(bdestado.validarestado(rq.estadonasc) != true || string.IsNullOrEmpty(rq.estadonasc))
+            if(reg1 == false)
                 throw new ArgumentException("Este estado não existe");
             
-            if(bdcargo.validarcargo(rq.cargo) != true || string.IsNullOrEmpty(rq.cargo))
-                throw new ArgumentException("Este cargo não foi encontrado");
-
-            Models.Response.FuncionarioResponse res = salvar.atualizar(id, rq);
+            if(reg2 == false)
+                throw new ArgumentException("Este cargo não existe");
+            
+            Models.Response.AtualizarFuncionarioResponse res = salvar.atualizar(rq.idcg, rq.idest, idfunc,rq);
             return res;
-        }   
+        }
     }
 }
