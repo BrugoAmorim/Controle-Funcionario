@@ -1,3 +1,7 @@
+
+// importa as funções de criar elementos
+import { CriarElementosAlterar, CriarElementosExcluir } from '../Src/otimizacao.js'
+
 let bdy = document.getElementById("informacoes");
 let opcao = document.getElementById("selecionado");
 
@@ -47,23 +51,18 @@ window.onload = async function carregarRegistros(){
             info.appendChild(cp2);
             btn.appendChild(img);
             info.appendChild(btn);
-
             bdy.appendChild(info);
-            
+
             if(btn.addEventListener("click", function(){
-                window.location.href = "../DelFunc/deletefunc.html";
-                
-                localStorage.setItem('id', obj.idfunc);
-                localStorage.setItem('nome', obj.nome);
-                localStorage.setItem('rg', obj.rg);
-                localStorage.setItem('cpf',obj.cpf);
-                localStorage.setItem('cargo', obj.cargo);
-                localStorage.setItem('estado', obj.estadonasc);
-                localStorage.setItem('telefone', obj.telefone);
-                localStorage.setItem('celular', obj.celular);
-            
+                CriarElementosExcluir(obj);
             }));
-            
+
+            if(cp1.addEventListener("click", function(){
+                CriarElementosAlterar(obj);
+            }));
+            if(cp2.addEventListener("click", function(){
+                CriarElementosAlterar(obj);
+            }));
         }
         
     })  
@@ -88,6 +87,7 @@ window.onload = async function carregarRegistros(){
             for(let i = 0; i < res.length; i++){
     
                 let obj = res[i];
+
                 let dtcontratacao = new Date(obj.datacontratado);
 
                 let dt = new Date();
@@ -118,21 +118,17 @@ window.onload = async function carregarRegistros(){
                 info.appendChild(cp2);
                 btn.appendChild(img);
                 info.appendChild(btn);
-                
                 bdy.appendChild(info);
-
+    
                 if(btn.addEventListener("click", function(){
-
-                    window.location.href = "../DelFunc/deletefunc.html";                    
-                    localStorage.setItem('id');
-                    localStorage.setItem('nome');
-                    localStorage.setItem('rg');
-                    localStorage.setItem('cpf');
-                    localStorage.setItem('cargo');
-                    localStorage.setItem('estado');
-                    localStorage.setItem('telefone');
-                    localStorage.setItem('celular');
-                
+                    CriarElementosExcluir(obj);
+                }));
+    
+                if(cp1.addEventListener("click", function(){
+                    CriarElementosAlterar(obj);
+                }));
+                if(cp2.addEventListener("click", function(){
+                    CriarElementosAlterar(obj);
                 }));
             }
         })      

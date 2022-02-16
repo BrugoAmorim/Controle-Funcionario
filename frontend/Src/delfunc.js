@@ -1,10 +1,9 @@
 
+import { ApagarElementosExlcuir } from '../Src/otimizacao.js';
+
 let aviso = document.getElementById('Aviso');
 
-// dados temporarios, serão excluidos assim que o usuario sair desta tela
-let id = localStorage.getItem('id');
-console.log(id);
-
+// elementos da tela que mostrarão as informações do empregado
 let nm = document.getElementById('nm');
 let rgfunc = document.getElementById('rg');  
 let cpfunc = document.getElementById('cpf');  
@@ -36,9 +35,11 @@ window.onload = () =>{
 // funcao que realiza o evento de apagar registro
 btn1.onclick = async () => {
 
+    let id = localStorage.getItem('id');
+
     let url = "http://localhost:5000/Funcionario/del-func/" + id;
 
-    const api = await fetch(url,{
+    await fetch(url,{
         mode:'cors',
         method: 'DELETE'
     }); 
@@ -47,15 +48,6 @@ btn1.onclick = async () => {
 }
 
 // funcao que apaga esses dados temporarios
-btn2.onclick = () => {
-
-    localStorage.removeItem('id');    
-    localStorage.removeItem('nome');
-    localStorage.removeItem('rg');
-    localStorage.removeItem('cpf');
-    localStorage.removeItem('cargo');
-    localStorage.removeItem('estado');
-    localStorage.removeItem('celular');
-
-    window.location.href = "../../Pages/Home/registrosfunc.html";
-}
+btn2.addEventListener("click", function(){
+    ApagarElementosExlcuir();
+});

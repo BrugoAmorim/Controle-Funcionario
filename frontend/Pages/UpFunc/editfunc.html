@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Info Funcionario</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../Img/icon-principal.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
             <div class="nome">
                 <div class="conteudo">
                     <div class="input-group flex-nowrap">
-                        <input type="text" class="form-control" placeholder="Nome Completo" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" placeholder="Nome Completo" aria-label="Username" aria-describedby="addon-wrapping" id="nomecompleto">
                     </div>
                 </div>
             </div>
@@ -30,37 +30,39 @@
             <div class="infoimportantes">
                 <div class="docs">
                     <div class="input-group flex-nowrap">
-                        <input type="text" class="form-control" placeholder="Rg Empregado" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" placeholder="Rg Empregado" aria-label="Username" aria-describedby="addon-wrapping" id="rgempregado">
                     </div>
                     <div class="input-group flex-nowrap">
-                        <input type="text" class="form-control" placeholder="Cpf Empregado" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" placeholder="Cpf Empregado" aria-label="Username" aria-describedby="addon-wrapping" id="cpfempregado">
                     </div>
                 </div>
                 <div class="contato">
                     <div class="input-group flex-nowrap">
-                        <input type="text" class="form-control" placeholder="N° Telefone" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" placeholder="N° Telefone" aria-label="Username" aria-describedby="addon-wrapping" id="telempregado">
                     </div>
                     <div class="input-group flex-nowrap">
-                        <input type="text" class="form-control" placeholder="N° Celular" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" placeholder="N° Celular" aria-label="Username" aria-describedby="addon-wrapping" id="celempregado">
                     </div>
                 </div>
             </div>
             <div class="infoadicional">
-                <div class="datacontratacao">
-                    Data de Contratação: 20/20/2000
+                <div id="dtcontratado" class="datacontratacao">
+                    
                 </div>
             </div>
             <div class="infoessenciais">
                 <div class="inputgroup">
                     <div class="input-group mb-3">
                         <select class="form-select" id="mudarestado">
-                          <option selected>Choose...</option>
+                            <option id="preselecionado"></option>
+                            <!-- lugar onde ficam as opcoes do estado -->
                         </select>
                         <label class="input-group-text" for="mudarestado">Estado</label>
                       </div>
                       <div class="input-group mb-3">
                         <select class="form-select" id="mudarcargo">
-                          <option selected>Choose...</option>
+                            <option id="preselecionado2"></option>
+                          <!-- lugar onde ficam as opcoes cargo -->
                         </select>
                         <label class="input-group-text" for="mudarcargo">
                             Cargo
@@ -70,15 +72,16 @@
             </div>
             <div class="eventos">
                 <div class="bloco2">
-                    <button class="btn btn-light">
+                    <a href="../Home/registrosfunc.html" id="Voltar" class="btn btn-light">
                         Voltar
-                    </button>
-                    <button class="btn btn-success">
+                    </a>
+                    <button id="Confirmar" class="btn btn-success">
                         Salvar
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="../../Src/updatefunc.js" type="module"></script>
 </body>
 </html>
