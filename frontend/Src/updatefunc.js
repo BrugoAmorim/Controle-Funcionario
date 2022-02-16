@@ -86,7 +86,6 @@ window.onload = async () => {
             select1.appendChild(opt);
         }
     })
-
 }
 
 // essas duas variaveis carregam uma lista de modelos, uma com informacoes dos estados e outras dos cargos
@@ -159,11 +158,10 @@ bttn1.onclick = async () => {
 
     let res = api.json();
     res.then(res => {
-
         if(res.codigo == 400)
-            alert(res.motivo);
+            swal("Ops, Algo deu Errado!", res.motivo, "error");
         else
-            alert("Alterações Confirmadas!")
+            swal("Alterações feitas!", "Tudo nos conformes ;)", "success");
     })
 }
 

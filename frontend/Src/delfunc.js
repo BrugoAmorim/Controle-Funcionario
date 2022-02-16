@@ -44,7 +44,7 @@ btn1.onclick = async () => {
         method: 'DELETE'
     }); 
 
-    window.location.href = "../../Pages/Home/registrosfunc.html";
+    swal("Concluído", "O registro foi deletado", "success");
 }
 
 // funcao que apaga esses dados temporarios

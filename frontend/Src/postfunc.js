@@ -87,9 +87,9 @@ Registrar.onclick = async function cadastrarFuncionario(){
     let res = api.json();
     res.then(res => {
         if(res.codigo == 400)
-            alert(res.motivo);
+            swal("Ops, algo de errado!", res.motivo, "error");
         else
-            window.location.href = "../../Pages/Home/registrosfunc.html";
+            swal("Registro feito!", "Funcionário cadastrado no sistema.", "success");
     });
 
 }
