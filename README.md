@@ -1,5 +1,5 @@
 # Controle-Funcionario
-Um projeto que fará CRUD em um banco de dados relacional(mysql)
+Um projeto que fará CRUD em um banco de dados relacional.
 
 Este projeto tem como objetivo apenas praticar os meus conhecimentos na programação, aprender novos métodos e experimentar coisas novas . Este sistema seria
 um gerenciador/controlador de funcionários, o usuário seria capaz de fazer consultas, inserções, alterações ou deletações.
@@ -24,6 +24,15 @@ haveria também que, o próprio sistema salvaria a data desse registro, para ass
 <strong>Após ter preenchido todos os campos, uma mensagem de confirmação avisaria ao usuário que o registro foi feito.</strong>
  
 ![suc-reg-func](https://user-images.githubusercontent.com/87936511/154604690-587f6dc2-e1f8-4bc5-879f-d5990cad43e4.png)
+
+## Tratamento de Erro
+
+Se o usuário acabar esquecendo de preencher algum campo, um alerta será emitido ao mesmo, para avisar aonde ele esqueceu de preencher, o sistema não cobra que seja obrigado a 
+preencher os campos de "N° Telefone" e "N° Celular", caso o usuário queira adicionar seus números para contato, o mesmo deverá ser feito na tela de editar as informações do empregado.
+
+<strong>Os Motivos Podem Variar.</strong>
+
+![tratamento-erro](https://user-images.githubusercontent.com/87936511/154817338-7e765b26-2ace-4d0d-bc57-95a6e30e4645.png)
 
 ## Informações do Empregado
 
